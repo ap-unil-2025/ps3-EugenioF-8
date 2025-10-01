@@ -3,71 +3,55 @@ Problem 3: Number Analysis
 Analyze a list of numbers provided by the user.
 """
 
-def get_numbers_from_user():
-    """
-    Get numbers from user until they type 'done'.
-    Return a list of numbers.
 
-    Returns:
-        list: List of numbers entered by user
-    """
+def get_numbers_from_user():
     numbers = []
 
     while True:
-        # TODO: Get input from user
-        # TODO: Check if user typed 'done'
-        # TODO: Try to convert to float and add to list
-        # TODO: Handle invalid input gracefully
-        pass
+        user_list = input("Please provide a list of numbers and type 'done' at the end of your list ")
+        if user_list == "done":
+            print(numbers)
+            break
 
+        elif user_list.isnumeric() == True:
+            numbers.append(float(user_list))
+
+        else:
+            print("Please only provide a list of numbers or type 'done' once your list is complete")
+            
     return numbers
 
 
+
 def analyze_numbers(numbers):
-    """
-    Analyze the list and return a dictionary with:
-    - count: number of elements
-    - sum: sum of all numbers
-    - average: average value
-    - minimum: smallest number
-    - maximum: largest number
-    - even_count: count of even numbers
-    - odd_count: count of odd numbers
 
-    Args:
-        numbers (list): List of numbers to analyze
+    number_of_elements = len(numbers)
+    sum_of_elements = sum(numbers)
+    average_of_elements = sum_of_elements/number_of_elements
+    minimum = min(numbers)
+    maximum = max(numbers)
 
-    Returns:
-        dict: Dictionary with analysis results, or None if list is empty
-    """
-    if not numbers:
-        return None
-
-    analysis = {}
-
-    # TODO: Calculate count
-    # TODO: Calculate sum
-    # TODO: Calculate average
-    # TODO: Find minimum
-    # TODO: Find maximum
-    # TODO: Count even numbers (hint: use modulo operator)
-    # TODO: Count odd numbers
-
-    return analysis
+    even_count = 0
+    odd_count = 0
+    
+    for i in numbers:
+        if i % 2 == 0:
+            even_count += 1
+        else:
+            odd_count += 1
+   
+    return { 'number_of_elements': number_of_elements, 'sum_of_elements': sum_of_elements, 'average_of_elements': average_of_elements, 'minimum': minimum, 'maximum': maximum, 'even_count': even_count, 'odd_count': odd_count }
 
 
 def display_analysis(analysis):
-    """
-    Display the analysis in a formatted way.
-
-    Args:
-        analysis (dict): Dictionary containing analysis results
-    """
-    if not analysis:
-        return
-
     print("\nAnalysis Results:")
     print("-" * 20)
+
+    if not analysis:
+        return
+    
+    for key in analysis.keys():
+        print(f"{key}: {analysis[key]}")
 
     # TODO: Display all analysis results in a nice format
     # Example:
@@ -75,7 +59,7 @@ def display_analysis(analysis):
     # Sum: 25
     # Average: 5.00
     # etc.
-    pass
+
 
 
 def main():
