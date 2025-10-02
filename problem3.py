@@ -24,12 +24,12 @@ def get_numbers_from_user():
 
 
 def analyze_numbers(numbers):
-
-    number_of_elements = len(numbers)
-    sum_of_elements = sum(numbers)
-    average_of_elements = sum_of_elements/number_of_elements
-    minimum = min(numbers)
-    maximum = max(numbers)
+    analysis = {}
+    analysis["number_of_elements"] = len(numbers)
+    analysis["sum_of_elements"] = sum(numbers)
+    analysis["average_of_elements"] = analysis["sum_of_elements"]/analysis["number_of_elements"]
+    analysis["minimum"] = min(numbers)
+    analysis["maximum"] = max(numbers)
 
     even_count = 0
     odd_count = 0
@@ -40,7 +40,7 @@ def analyze_numbers(numbers):
         else:
             odd_count += 1
    
-    return { 'number_of_elements': number_of_elements, 'sum_of_elements': sum_of_elements, 'average_of_elements': average_of_elements, 'minimum': minimum, 'maximum': maximum, 'even_count': even_count, 'odd_count': odd_count }
+    return analysis
 
 
 def display_analysis(analysis):
