@@ -3,6 +3,7 @@ Problem 4: File Word Counter
 Process text files and perform various analyses.
 """
 
+
 def create_sample_file(filename="sample.txt"):
     """
     Create a sample text file for testing.
@@ -15,85 +16,69 @@ It is widely used in web development, data science, and automation.
 Python's simple syntax makes it great for beginners.
 Many companies use Python for their projects."""
 
+
     with open(filename, 'w') as f:
         f.write(content)
     print(f"Created {filename}")
 
 
 def count_words(filename):
-    """
-    Count total words in the file.
+    
+    with open(filename) as f:
+        text = f.read().split()
 
-    Args:
-        filename (str): Name of the file to analyze
-
-    Returns:
-        int: Total number of words
-    """
-    # TODO: Open file and count words
-    # Hint: Use split() to separate words
-    pass
+    return len(text)
 
 
 def count_lines(filename):
-    """
-    Count total lines in the file.
+    
+    with open(filename) as f:
+        lines = f.read().count(".")
 
-    Args:
-        filename (str): Name of the file to analyze
-
-    Returns:
-        int: Total number of lines
-    """
-    # TODO: Open file and count lines
-    pass
+    return lines
 
 
 def count_characters(filename, include_spaces=True):
-    """
-    Count characters in the file.
+    with open(filename) as f:
+        characters = f.read()
+        
+    if include_spaces:
+        return len(characters)
+        
+    else:
+        exclude_spaces = characters.replace(" ", "")
 
-    Args:
-        filename (str): Name of the file to analyze
-        include_spaces (bool): Whether to include spaces in count
-
-    Returns:
-        int: Total number of characters
-    """
-    # TODO: Open file and count characters
-    # If include_spaces is False, don't count spaces
-    pass
+    return len(exclude_spaces)
 
 
 def find_longest_word(filename):
-    """
-    Find and return the longest word in the file.
+    
+    with open(filename) as f:
+        longest_word = f.read()
+        longest_word = longest_word.replace(","," ").replace("."," ").split()
+        
+    word = ""
+    for i in longest_word:
+        if len(i) > len(word):
+             word = i
+    return word
 
-    Args:
-        filename (str): Name of the file to analyze
 
-    Returns:
-        str: The longest word found
-    """
-    # TODO: Find the longest word
-    # Hint: You might need to remove punctuation
-    pass
+import string
 
+frequency = {}
 
 def word_frequency(filename):
-    """
-    Return a dictionary of word frequencies.
-    Convert words to lowercase and remove punctuation.
+    with open(filename) as f:
+        text = f.read().lower()
+        
+    for p in string.punctuation:
+        text = text.replace(p, "")
 
-    Args:
-        filename (str): Name of the file to analyze
-
-    Returns:
-        dict: Dictionary with words as keys and frequencies as values
-    """
-    import string
-
-    frequency = {}
+    words = text.split()
+    for word in words:
+        frequency[word] = frequency.get(word, 0) + 1
+    return frequency
 
     # TODO: Open file
     # TODO: Read all words
@@ -101,7 +86,6 @@ def word_frequency(filename):
     # TODO: Remove punctuation (use string.punctuation)
     # TODO: Count frequency of each word
 
-    return frequency
 
 
 def analyze_file(filename):
