@@ -26,9 +26,9 @@ def get_numbers_from_user():
 def analyze_numbers(numbers):
 
     analysis = {}
-    analysis["number_of_elements"] = len(numbers)
-    analysis["sum_of_elements"] = sum(numbers)
-    analysis["average_of_elements"] = analysis["sum_of_elements"]/analysis["number_of_elements"]
+    analysis["count"] = len(numbers)
+    analysis["sum"] = sum(numbers)
+    analysis["average"] = analysis["sum"]/analysis["count"]
     analysis["minimum"] = min(numbers)
     analysis["maximum"] = max(numbers)
 
