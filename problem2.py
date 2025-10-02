@@ -28,26 +28,20 @@ def temperature_converter():
     # - Perform conversion
     # - Display result rounded to 2 decimal places
 
-def celsius_to_fahrenheit(celsius):
-    return((celsius * 9/5) + 32)
+    try:
+        temperature_input = float(input("Please type the temperature that you would like to convert as a numerical value: "))
 
-def fahrenheit_to_celsius(fahrenheit):
-    return((fahrenheit - 32) * 5/9)
+    except ValueError:
+        print("Please try again by inserting a numerical value")
 
-while  True:
-    temperature_input = input("Enter the current temperature (C for Celsius, F for Fahrenheit) ")
+    temperature_unit = input("Please type temperature measurement unit (C) or (F): ")
+    if temperature_unit == "C":
+            conversion = celsius_to_fahrenheit(temperature_input)
+            print(f"{temperature_input:.2f}", " is equivalent to ", f"{conversion:.2f}", " degrees Fahrenheit")    
 
-    if temperature_input == "C":
-        c = float(input("Please type the temperature that you would like to convert as a numerical value "))
-        celsius_to_fahrenheit(c)
-        print(c, " is equivalent to ", celsius_to_fahrenheit, " degrees Fahrenheit")
-        break
-
-    elif temperature_input == "F":
-        f = float(input("Please type the temperature that you would like to convert as a numerical value "))
-        fahrenheit_to_celsius(f)
-        print(f, " is equivalent to ", fahrenheit_to_celsius, " degrees Celsius")
-        break
+    elif temperature_unit == "F":
+            conversion = fahrenheit_to_celsius(temperature_input)
+            print(f"{temperature_input:.2f}", " is equivalent to ", f"{conversion:.2f}", " degrees Celsius")
 
     else:
         print("Please try again by inserting C or F")
