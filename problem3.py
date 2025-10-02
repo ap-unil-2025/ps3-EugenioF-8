@@ -25,6 +25,9 @@ def get_numbers_from_user():
 
 def analyze_numbers(numbers):
 
+    if not numbers:
+        return None
+
     analysis = {}
     analysis["count"] = len(numbers)
     analysis["sum"] = sum(numbers)
