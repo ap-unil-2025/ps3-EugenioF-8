@@ -24,6 +24,7 @@ def get_numbers_from_user():
 
 
 def analyze_numbers(numbers):
+
     analysis = {}
     analysis["number_of_elements"] = len(numbers)
     analysis["sum_of_elements"] = sum(numbers)
@@ -35,10 +36,11 @@ def analyze_numbers(numbers):
     odd_count = 0
     
     for i in numbers:
-        if i % 2 == 0:
-            even_count += 1
-        else:
-            odd_count += 1
+        if i.is_integer():
+            if i % 2 == 0:
+                even_count += 1
+            else:
+                odd_count += 1
    
     return analysis
 
